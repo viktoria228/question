@@ -2,10 +2,11 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-
+use app\models\Question;
 
 class QuestionController extends Controller
 {
@@ -40,6 +41,14 @@ class QuestionController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Question();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->add();
+        }
+
+            return $this->render('index', [
+            'model' => $model,
+        ]);
     }
 }
