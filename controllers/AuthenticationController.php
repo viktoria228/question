@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Registration;
+use app\models\Login;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
@@ -10,7 +11,6 @@ use yii\filters\VerbFilter;
 
 class AuthenticationController extends Controller
 {
-
     /**
      * {@inheritdoc}
      */
@@ -19,6 +19,7 @@ class AuthenticationController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['login', 'logout', 'index'],
                 'rules' => [
                     [
                         'actions' => ['index', 'login'],
@@ -68,7 +69,6 @@ class AuthenticationController extends Controller
                     return $this->goHome();
                 }
             }
-            return $this->goBack();
         }
 
         return $this->render('index', [
@@ -79,7 +79,19 @@ class AuthenticationController extends Controller
 
     public function actionLogin()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
 
+        $model = new Login();
+        if ($model->load(Yii::$app->request->post()) && $model->login())
+        {
+            return $this->goHome();
+        }
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
 

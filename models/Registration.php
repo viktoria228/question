@@ -24,12 +24,12 @@ class Registration extends ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'password2', 'email'], 'required'],
+            [['username', 'password', 'password2', 'email'], 'required', 'message' => 'Поле не може бути пустим.'],
             [['username', 'password', 'password2', 'email'], 'trim'],
-            [['username', 'password', 'password2', 'email'], 'string', 'min' => 4, 'max' => 200],
-            [['email', 'username'], 'unique'],
-            ['email', 'email'],
-            ['password', 'compare', 'compareAttribute' => 'password2'],
+            [['username', 'password', 'password2', 'email'], 'string', 'min' => 4, 'max' => 200, 'message' => 'Поле має містити він 4 до 200 символів.'],
+            [['email', 'username'], 'unique', 'message' => 'Таке значення вже існує'],
+            ['email', 'email', 'message' => 'Емайл вказано не коректно'],
+            ['password', 'compare', 'compareAttribute' => 'password2', 'message' => 'Паролі не збігаються'],
             ['rememberMe', 'boolean'],
         ];
     }
@@ -50,7 +50,7 @@ class Registration extends ActiveRecord
     {
 
         if (!$this->validate()) {
-
+            return null;
         }
         $user = new User();
         $user->username = $this->username;
