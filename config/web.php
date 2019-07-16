@@ -4,6 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
+    'name' => 'Опитування',
     'defaultRoute' => 'question',
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
