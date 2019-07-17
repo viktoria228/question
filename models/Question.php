@@ -1,25 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: залупа
- * Date: 16-07-2019
- * Time: 21:56
- */
 
 namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\data\Pagination;
 
 class Question extends ActiveRecord
 {
-    //public $id;
-//    public $title;
-//    public $userId;
-//    public $likes;
-//    public $dislikes;
-//    public $template;
-
 
     public function rules()
     {
@@ -46,5 +34,23 @@ class Question extends ActiveRecord
 
         $this->save();
     }
-    
+
+
+    public function getAll()
+    {
+        $query = Question::find();
+
+        $pages = new Pagination(['totalCount' => count($query)]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return ['models' => $models, 'pages' => $pages];
+    }
+
+
+    public static function getById($id)
+    {
+        return Question::findOne(['id' => $id]);
+    }
 }
