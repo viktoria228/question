@@ -31,6 +31,7 @@ class Question extends ActiveRecord
         $this->likes = 0;
         $this->dislikes = 0;
         $this->template = 0;
+        $this->hash = Yii::$app->security->generateRandomString() . '_' . time();
 
         $this->save();
     }
@@ -52,5 +53,11 @@ class Question extends ActiveRecord
     public static function getById($id)
     {
         return Question::findOne(['id' => $id]);
+    }
+
+
+    public static function getByHash($hash)
+    {
+        return Question::findOne(['hash' => $hash]);
     }
 }

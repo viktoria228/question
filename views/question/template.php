@@ -32,7 +32,7 @@ use yii\helpers\Url;
             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Дізлайк</button>
             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Лайк</button>
             <span class="pull-right text-muted"><?=$one->likes?> Лайків - <?=$one->dislikes?> Дізлайків</span>
-            <?= Html::a('Прийняти участь в опитуванні', Url::to(['question/detail', 'id' => $one->id]), ['class' => 'btn btn-success btn-xs']); ?>
+            <?= Html::a('Прийняти участь в опитуванні', Url::to(['question/detail', 'id' => $one->hash]), ['class' => 'btn btn-success btn-xs']); ?>
         </div>
     </div>
 </div>

@@ -50,7 +50,7 @@ use yii\widgets\Pjax;
                                 <div class="user-block">
                                     <img class="img-circle img-bordered-sm" src="/img/user1-128x128.jpg" alt="user image">
                                     <span class="username">
-                                        <a href="#"><?=Yii::$app->user->identity->username?></a>
+                                        <a href="#">Адміністратор</a>
                                     </span>
                                     <span class="description">Віддай свій голос за найкращого.</span>
                                 </div>
@@ -64,68 +64,68 @@ use yii\widgets\Pjax;
                                     </div>
                                     <div class="box-body">
                                         <div class="row">
-                                                <a href="<?=Url::to(['question/vote', 'id' => $question->id, 'status' => 'agree'])?>" >
-                                                    <div class="col-md-4">
-                                                        <div class="info-box bg-green">
-                                                            <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                            <a href="<?=Url::to(['question/vote', 'id' => $question->hash, 'status' => 'agree'])?>" >
+                                                <div class="col-md-4">
+                                                    <div class="info-box bg-green">
+                                                        <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
 
-                                                            <div class="info-box-content">
-                                                                <span class="info-box-text">Погоджуюсь</span>
-                                                                <span class="info-box-number"><?=$question->agree?></span>
+                                                        <div class="info-box-content">
+                                                            <span class="info-box-text">Погоджуюсь</span>
+                                                            <span class="info-box-number"><?=$question->agree?></span>
 
-                                                                <div class="progress">
-                                                                    <div class="progress-bar" style="width: 70%"></div>
-                                                                </div>
-                                                                <span class="progress-description">
-                                                                    70% погодилось
-                                                                </span>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" style="width: 70%"></div>
                                                             </div>
-                                                            <!-- /.info-box-content -->
+                                                            <span class="progress-description">
+                                                                70% погодилось
+                                                            </span>
                                                         </div>
+                                                        <!-- /.info-box-content -->
                                                     </div>
-                                                </a>
-                                                <a href="#" id="stop">
-                                                    <div class="col-md-4 col-sm-6 col-xs-12" >
-                                                        <div class="info-box bg-yellow">
-                                                            <span class="info-box-icon"><i class="fa fa-hand-paper-o    "></i></span>
+                                                </div>
+                                            </a>
+                                            <a href="<?=Url::to(['question/vote', 'id' => $question->hash, 'status' => 'stop'])?>" >
+                                                <div class="col-md-4 col-sm-6 col-xs-12" >
+                                                    <div class="info-box bg-yellow">
+                                                        <span class="info-box-icon"><i class="fa fa-hand-paper-o    "></i></span>
 
-                                                            <div class="info-box-content">
-                                                                <span class="info-box-text">Утримуюсь</span>
-                                                                <span class="info-box-number"><?=$question->stop?></span>
+                                                        <div class="info-box-content">
+                                                            <span class="info-box-text">Утримуюсь</span>
+                                                            <span class="info-box-number"><?=$question->stop?></span>
 
-                                                                <div class="progress">
-                                                                    <div class="progress-bar" style="width: 70%"></div>
-                                                                </div>
-                                                                <span class="progress-description">
-                                                                    70% утрималось
-                                                                </span>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" style="width: 70%"></div>
                                                             </div>
-                                                            <!-- /.info-box-content -->
+                                                            <span class="progress-description">
+                                                                70% утрималось
+                                                            </span>
                                                         </div>
-                                                        <!-- /.info-box -->
+                                                        <!-- /.info-box-content -->
                                                     </div>
-                                                </a>
-                                                <a href="#" id="against">
-                                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                                        <div class="info-box bg-red">
-                                                            <span class="info-box-icon"><i class="fa  fa-thumbs-o-down"></i></span>
+                                                    <!-- /.info-box -->
+                                                </div>
+                                            </a>
+                                            <a href="<?=Url::to(['question/vote', 'id' => $question->hash, 'status' => 'against'])?>" >
+                                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                                    <div class="info-box bg-red">
+                                                        <span class="info-box-icon"><i class="fa  fa-thumbs-o-down"></i></span>
 
-                                                            <div class="info-box-content">
-                                                                <span class="info-box-text">Проти</span>
-                                                                <span class="info-box-number"><?=$question->against?></span>
+                                                        <div class="info-box-content">
+                                                            <span class="info-box-text">Проти</span>
+                                                            <span class="info-box-number"><?=$question->against?></span>
 
-                                                                <div class="progress">
-                                                                    <div class="progress-bar" style="width: 70%"></div>
-                                                                </div>
-                                                                <span class="progress-description">
-                                                                    70% проти
-                                                                </span>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" style="width: 70%"></div>
                                                             </div>
-                                                            <!-- /.info-box-content -->
+                                                            <span class="progress-description">
+                                                                70% проти
+                                                            </span>
                                                         </div>
-                                                        <!-- /.info-box -->
+                                                        <!-- /.info-box-content -->
                                                     </div>
-                                                </a>
+                                                    <!-- /.info-box -->
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
